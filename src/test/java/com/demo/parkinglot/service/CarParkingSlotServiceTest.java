@@ -81,7 +81,7 @@ public class CarParkingSlotServiceTest {
         slots.add(slot);
         ParkingSlotDTO parkingSlotDTOVerification = MockDataProvider.getParkingSlotDTOWithDefaultData(vehicleDTO);
         parkingSlotDTOVerification.setAllocated(true);
-        Mockito.when(parkingSlotRepository.findAll()).thenReturn(slots);
+        Mockito.when(parkingSlotRepository.findByIsAllocated(false)).thenReturn(slots);
         Mockito.when(entityToDtoMapper.mapSlotEntityToDTO(slot)).thenReturn(parkingSlotDTOVerification);
         Mockito.when(dtoToEntityMapper.getVehicleByDto(vehicleDTO)).thenReturn(MockDataProvider.getVehicleWithDefaultData());
         Mockito.when(parkingSlotRepository.save(slot)).thenReturn(slot);

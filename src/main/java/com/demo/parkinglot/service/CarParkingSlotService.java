@@ -50,7 +50,7 @@ public class CarParkingSlotService implements ParkingSlotService{
         if (localDateTime.isAfter(LocalDateTime.now())) {
            throw new SlotException("In-time should not be future date");
         }
-        List<Slot> slots  = (List<Slot>) parkingSlotRepository.findAll();
+        List<Slot> slots  = parkingSlotRepository.findByIsAllocated(false);
         if (slots.isEmpty()){
             throw new SlotException("Parking lot is full");
         }
